@@ -14,7 +14,6 @@ public class AddressCsvRepository implements AddressRepository {
 
     @Override
     public List<Address> getAll() {
-
         try {
             Path path = Paths.get("src/main/resources/utf_ken_all.csv");
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
@@ -24,13 +23,21 @@ public class AddressCsvRepository implements AddressRepository {
                 String[] data = lines.get(i).split(",");
                 if (data.length == 15) {
                     Address address = new Address(
-                            data[0],
-                            data[1],
-                            data[2],data[3],
-                            data[4],data[5],data[6],
-                            data[7],data[8],data[9],
-                            data[10],data[11],data[12],
-                            data[13],data[14]
+                        data[0],
+                        data[1],
+                        data[2],
+                        data[3],
+                        data[4],
+                        data[5],
+                        data[6],
+                        data[7],
+                        data[8],
+                        data[9],
+                        data[10],
+                        data[11],
+                        data[12],
+                        data[13],
+                        data[14]
                     );
                     addresses.add(address);
                 }

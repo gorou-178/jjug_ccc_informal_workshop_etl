@@ -10,6 +10,6 @@ public class ScheduledTasks {
 
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
-        System.out.println("Current time is " + new Date());
+        //System.out.println("Current time is " + new Date());
     }
 }
