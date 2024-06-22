@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.0'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id "org.flywaydb.flyway" version "8.2.0"
 }
 
 group = 'com.example'
@@ -19,9 +20,15 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
 	implementation 'org.springframework.integration:spring-integration-file'
+	implementation 'com.h2database:h2'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	testImplementation 'org.dbunit:dbunit:2.7.3'
+	testImplementation 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -29,4 +36,13 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+flyway {
+	url = 'jdbc:h2:mem:etl_db'
+	user = 'developer'
+	password = 'RootPass_1'
+	schemas = ['etl_app']
+	locations = ['classpath:db/migrations']
+	baselineOnMigrate = true
 }

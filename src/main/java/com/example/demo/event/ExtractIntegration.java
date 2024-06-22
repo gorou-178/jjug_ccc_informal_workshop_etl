@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
-@Component
+//@Component
 public class ExtractIntegration {
 
 //    @Bean
@@ -19,7 +19,7 @@ public class ExtractIntegration {
 //        return messageSource;
 //    }
 
-    @Bean
+    //@Bean
     public IntegrationFlow extractFlow() {
         return IntegrationFlow
                 .from("address.extract")
