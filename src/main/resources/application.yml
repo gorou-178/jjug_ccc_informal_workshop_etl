@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:etl_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE
+    username: developer
+    password: RootPass_1
+  sql:
+    init:
+      mode: always
+      schema-locations:
+        - classpath:db/migrations/V1_001__create_address_table.sql
+      encoding: utf-8
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enable: false
+
